@@ -1,13 +1,7 @@
-﻿using System.Text;
+﻿using LoginForm.Models;
+using LoginForm.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LoginForm
 {
@@ -16,9 +10,52 @@ namespace LoginForm
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserManager _userManager; 
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _userManager = new UserManager();
+        }
+
+        private void OnRegisterClicked(object sender, RoutedEventArgs e)
+        {
+            string username = usernameTextBox.Text;
+            string password = passwordTextBox.Password;
+
+
+            _userManager.Register(username, password);
+
+            //usernameTextBox.Text = "";
+            usernameTextBox.Clear(); //Maakt de tekstbox leeg
+            passwordTextBox.Clear();
+            usernameTextBox.Focus(); //verplaatst cursor naar usernameTextBox
+        }
+
+        private void OnLoginClicked(object sender, RoutedEventArgs e)
+        {
+            Registration registration = new Registration()
+            {
+                Username = usernameTextBox.Text,
+                Password = passwordTextBox.Password,
+            };
+
+            if(_userManager.TryLogin(registration))
+            {
+                statusTextBlock.Text = "Login succesvol!";
+                statusTextBlock.Foreground = Brushes.Green;
+            }
+            else
+            {
+                statusTextBlock.Text = "Ongeldige gebruikersnaam of wachtwoord.";
+                statusTextBlock.Foreground = Brushes.Red;
+            }
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

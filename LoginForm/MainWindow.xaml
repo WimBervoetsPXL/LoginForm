@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginForm"
         mc:Ignorable="d"
-        Title="Login" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Login" Height="270" Width="433" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Label Content="Meld je aan" HorizontalAlignment="Center" VerticalAlignment="Top"
+        <Label Content="Meld je aan" 
+               HorizontalAlignment="Center" VerticalAlignment="Top"
                FontFamily="Arial Black" FontSize="20"/>
         <Label Content="Gebruikersnaam: " HorizontalAlignment="Left" Margin="75,70,0,0" VerticalAlignment="Top"/>
-        <Label Content="Wachtwoord: " HorizontalAlignment="Left" Margin="75,101,0,0" VerticalAlignment="Top"/>
+        <Label Content="Wachtwoord: " HorizontalAlignment="Left" Margin="75,109,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="usernameTextBox" HorizontalAlignment="Left" Margin="194,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-        <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="194,0,0,0" VerticalAlignment="Center" Width="180"/>
-        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="317,173,0,0" VerticalAlignment="Top" Padding="10"/>
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="258,173,0,0" VerticalAlignment="Top" Padding="10"/>
-        <Button x:Name="registerButton" Content="Register" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Padding="10" Background="Red"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" Background="#FFC7C7C7"/>
+        <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="193,114,0,0" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="317,173,0,0" VerticalAlignment="Top" Padding="10" Click="cancelButton_Click"/>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="258,173,0,0" VerticalAlignment="Top" Padding="10" Click="OnLoginClicked"/>
+        <Button x:Name="registerButton" 
+                Content="Register" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="0,16,28,0" Padding="10" Background="Red" Click="OnRegisterClicked"/>
+        <TextBlock x:Name="statusTextBlock" HorizontalAlignment="Center" Margin="0,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" Background="White"/>
 
     </Grid>
 </Window>
